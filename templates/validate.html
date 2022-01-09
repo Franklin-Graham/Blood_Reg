@@ -1,0 +1,58 @@
+{% load static %}
+<script src="{% static 'assets/js/login.js' %}" xmlns="http://www.w3.org/1999/html"></script>
+<link href="{% static 'assets/css/login.css' %}" rel="stylesheet">
+<div class='brand'>
+  <a href='https://www.jamiecoulter.co.uk' target='_blank'>
+    <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/logo.png'>
+  </a>
+</div>
+<div class='login'>
+  <div class='login_title'>
+    <span>Login For Confirm</span>
+    {% for i in messages %}
+    <p style="color:red;font-size:15px;">{{i}}</p>
+    {% endfor %}
+  </div>
+  <div class='login_fields'>
+    <div class='login_fields__user'>
+      <div class='icon'>
+        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>
+      </div>
+    </div>
+      <form action="validate" method="post">
+        {% csrf_token %}
+        <input placeholder='Username' type='text' name="username">
+          <div class='validation'>
+            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
+          </div>
+        </input>
+
+    <div class='login_fields__password'>
+      <div class='icon'>
+        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>
+      </div>
+      <input placeholder='Password' type='password' name="dpassword">
+      <div class='validation'>
+        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
+      </div>
+    </div>
+    <div class='login_fields__submit'>
+      <input value="submit" type="submit" class="btn btn-info">
+      <br><br>
+      <div class='forgot'>
+        <a style="color:violet;font-size:11px;text-align:left;" href="{% url 'sign_app:register' %}">Not have an account? Create Here</a>
+      </div>
+    </div>
+      </form>
+  </div>
+
+  <div class='success'>
+    <h2>Authentication Success</h2>
+    <p>Welcome back</p>
+  </div>
+
+</div>
+<div class='authent'>
+  <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/puff.svg'>
+  <p>Authenticating...</p>
+</div>
